@@ -1,0 +1,1 @@
+<!-- Remove this file as it's been replaced by ServicePageTemplate and IndustryPageTemplate -->
