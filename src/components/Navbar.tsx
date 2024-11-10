@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Logo from './Logo';
+import React, { useState, useEffect } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import company_logo from "../assets//igd4-logo.jpeg";
+import Logo from "./Logo";
 
 interface NavItem {
   label: string;
@@ -18,50 +19,56 @@ export const Navbar = () => {
 
   const navItems: NavItem[] = [
     {
-      label: 'Services',
+      label: "Services",
       children: [
-        { label: 'Custom Software Development', path: '/services/custom-software' },
-        { label: 'AI & Machine Learning', path: '/services/ai-ml' },
-        { label: 'Cloud Services', path: '/services/cloud-services' },
-        { label: 'Cybersecurity', path: '/services/cybersecurity' },
-        { label: 'Business Intelligence', path: '/services/business-intelligence' },
-        { label: 'Mobile Development', path: '/services/mobile-development' }
-      ]
+        {
+          label: "Custom Software Development",
+          path: "/services/custom-software",
+        },
+        { label: "AI & Machine Learning", path: "/services/ai-ml" },
+        { label: "Cloud Services", path: "/services/cloud-services" },
+        { label: "Cybersecurity", path: "/services/cybersecurity" },
+        {
+          label: "Business Intelligence",
+          path: "/services/business-intelligence",
+        },
+        { label: "Mobile Development", path: "/services/mobile-development" },
+      ],
     },
     {
-      label: 'Industries',
+      label: "Industries",
       children: [
-        { label: 'Healthcare', path: '/industries/healthcare' },
-        { label: 'Finance', path: '/industries/finance' },
-        { label: 'Retail', path: '/industries/retail' },
-        { label: 'Manufacturing', path: '/industries/manufacturing' }
-      ]
+        { label: "Healthcare", path: "/industries/healthcare" },
+        { label: "Finance", path: "/industries/finance" },
+        { label: "Retail", path: "/industries/retail" },
+        { label: "Manufacturing", path: "/industries/manufacturing" },
+      ],
     },
     {
-      label: 'Case Studies',
-      path: '/case-studies'
-    },
-    { 
-      label: 'Company',
-      children: [
-        { label: 'About', path: '/about' },
-        { label: 'Careers', path: '/careers' },
-        { label: 'Blog', path: '/blog' },
-        { label: 'Contact', path: '/contact' }
-      ]
+      label: "Case Studies",
+      path: "/case-studies",
     },
     {
-      label: 'Resources',
-      path: '/resources'
-    }
+      label: "Company",
+      children: [
+        { label: "About", path: "/about" },
+        { label: "Careers", path: "/careers" },
+        { label: "Blog", path: "/blog" },
+        { label: "Contact", path: "/contact" },
+      ],
+    },
+    {
+      label: "Resources",
+      path: "/resources",
+    },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleNavClick = (item: NavItem) => {
@@ -72,18 +79,18 @@ export const Navbar = () => {
     }
 
     if (item.href) {
-      if (location.pathname !== '/') {
-        navigate('/');
+      if (location.pathname !== "/") {
+        navigate("/");
         setTimeout(() => {
           const element = document.getElementById(item.href!);
           if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
           }
         }, 100);
       } else {
         const element = document.getElementById(item.href);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       }
     }
@@ -92,23 +99,28 @@ export const Navbar = () => {
   };
 
   return (
-    <nav 
+    <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-black/90 backdrop-blur-md' : 'bg-transparent'
+        isScrolled ? "bg-black/90 backdrop-blur-md" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Logo />
-          
+          {/* <Link to="/" className="flex items-center">
+            <img
+              src={company_logo}
+              alt="logo"
+              className="h-10 w-[200px]  object-cover"
+            />
+          </Link> */}
+
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               {navItems.map((item) => (
                 <div key={item.label} className="relative group">
                   {item.children ? (
-                    <button
-                      className="flex items-center text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                    >
+                    <button className="flex items-center text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium transition-colors">
                       {item.label}
                       <ChevronDown className="w-4 h-4 ml-1 transform group-hover:rotate-180 transition-transform" />
                     </button>

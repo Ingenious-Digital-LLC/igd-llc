@@ -1,46 +1,47 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
 const technologies = [
   {
-    name: 'React',
-    logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg',
-    category: 'Frontend'
+    name: "React",
+    logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg",
+    category: "Frontend",
   },
   {
-    name: 'Node.js',
-    logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg',
-    category: 'Backend'
+    name: "Node.js",
+    logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg",
+    category: "Backend",
   },
   {
-    name: 'Python',
-    logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg',
-    category: 'AI/ML'
+    name: "Python",
+    logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg",
+    category: "AI/ML",
   },
   {
-    name: 'TensorFlow',
-    logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg',
-    category: 'AI/ML'
+    name: "TensorFlow",
+    logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg",
+    category: "AI/ML",
   },
   {
-    name: 'AWS',
-    logo: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original.svg',
-    category: 'Cloud'
-  }
+    name: "AWS",
+    logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+    category: "Cloud",
+  },
 ];
 
 const TechStack = () => {
   return (
     <section className="py-24 bg-black relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,0,0,0.05),transparent_70%)]" />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4 text-gradient">
             Technology Stack
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            We leverage cutting-edge technologies to deliver powerful, scalable solutions
+            We leverage cutting-edge technologies to deliver powerful, scalable
+            solutions
           </p>
         </div>
 
@@ -48,7 +49,7 @@ const TechStack = () => {
         <div className="relative">
           <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-black to-transparent pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-black to-transparent pointer-events-none" />
-          
+
           <div className="flex space-x-12 animate-scroll">
             {[...technologies, ...technologies].map((tech, index) => (
               <div
@@ -62,7 +63,7 @@ const TechStack = () => {
                     className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
                   />
                 </div>
-                
+
                 {/* Tooltip */}
                 <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-black/90 text-white px-3 py-1 rounded text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-black/90 rotate-45" />
@@ -75,7 +76,7 @@ const TechStack = () => {
 
         {/* Technology Categories */}
         <div className="mt-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {['Frontend', 'Backend', 'AI/ML', 'Cloud'].map((category) => (
+          {["Frontend", "Backend", "AI/ML", "Cloud"].map((category) => (
             <div
               key={category}
               className="p-6 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm hover:border-red-500/20 transition-all duration-300"
@@ -85,8 +86,8 @@ const TechStack = () => {
               </h3>
               <div className="flex flex-wrap gap-3">
                 {technologies
-                  .filter(tech => tech.category === category)
-                  .map(tech => (
+                  .filter((tech) => tech.category === category)
+                  .map((tech) => (
                     <div
                       key={tech.name}
                       className="flex items-center space-x-2 px-3 py-1 bg-white/5 rounded-full text-sm text-gray-300"

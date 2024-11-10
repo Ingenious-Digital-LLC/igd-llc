@@ -1,29 +1,36 @@
-import React, { useState } from 'react';
-import { Search, Calendar, Clock, ArrowRight, Tag } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { blogPosts, categories } from '../data/blog';
+import React, { useState } from "react";
+import { Search, Calendar, Clock, ArrowRight, Tag } from "lucide-react";
+import { Link } from "react-router-dom";
+import { blogPosts, categories } from "../data/blog";
 
 const Blog = () => {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredPosts = blogPosts.filter(post => {
-    const matchesCategory = selectedCategory === 'All' || post.category === selectedCategory;
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         post.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+  const filteredPosts = blogPosts.filter((post) => {
+    const matchesCategory =
+      selectedCategory === "All" || post.category === selectedCategory;
+    const matchesSearch =
+      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.tags.some((tag) =>
+        tag.toLowerCase().includes(searchQuery.toLowerCase())
+      );
     return matchesCategory && matchesSearch;
   });
 
   return (
     <section id="blog" className="py-24 bg-black relative">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,0,0,0.05),transparent_70%)]" />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4 text-gradient">Latest Insights</h2>
+          <h2 className="text-4xl font-bold mb-4 text-gradient">
+            Latest Insights
+          </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Expert perspectives on technology, innovation, and digital transformation
+            Expert perspectives on technology, innovation, and digital
+            transformation
           </p>
         </div>
 
@@ -40,15 +47,15 @@ const Blog = () => {
                 className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:outline-none focus:border-red-500 text-white placeholder-gray-400"
               />
             </div>
-            
+
             <div className="flex flex-wrap gap-2">
               <button
                 key="all"
-                onClick={() => setSelectedCategory('All')}
+                onClick={() => setSelectedCategory("All")}
                 className={`px-4 py-2 rounded-full text-sm transition-all ${
-                  selectedCategory === 'All'
-                    ? 'bg-red-500 text-white'
-                    : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                  selectedCategory === "All"
+                    ? "bg-red-500 text-white"
+                    : "bg-white/5 text-gray-400 hover:bg-white/10"
                 }`}
               >
                 All
@@ -59,8 +66,8 @@ const Blog = () => {
                   onClick={() => setSelectedCategory(category.name)}
                   className={`px-4 py-2 rounded-full text-sm transition-all ${
                     selectedCategory === category.name
-                      ? 'bg-red-500 text-white'
-                      : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                      ? "bg-red-500 text-white"
+                      : "bg-white/5 text-gray-400 hover:bg-white/10"
                   }`}
                 >
                   {category.name}
@@ -105,9 +112,7 @@ const Blog = () => {
                   {post.title}
                 </h3>
 
-                <p className="text-gray-400 mb-4">
-                  {post.excerpt}
-                </p>
+                <p className="text-gray-400 mb-4">{post.excerpt}</p>
 
                 <div className="flex flex-wrap gap-2 mb-6">
                   {post.tags.map((tag, index) => (
